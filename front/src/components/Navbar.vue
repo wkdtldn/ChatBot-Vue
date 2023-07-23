@@ -1,6 +1,11 @@
 <template>
   <div id="nav">
-    <MyFriend v-for="(item, index) in friends" :key="index" :name="item" />
+    <MyFriend
+      v-for="(item, index) in friends"
+      :key="index"
+      :name="item.name"
+      :src="item.src"
+    />
   </div>
 </template>
 
@@ -10,18 +15,21 @@ export default {
   name: "NavBar",
   data() {
     return {
-      friends: ["John", "Jane", "Kevin", "Andrew"],
-      friendsinfo: [
-        "best friend",
-        "old friend",
-        "busy friend",
-        "academy friend",
+      friends: [
+        {
+          name: "John",
+          src: "lion.png",
+        },
+        { name: "Jane", src: "muzi.png" },
+        { name: "Kevin", src: "apeach.png" },
+        { name: "Andrew", src: "neo.png" },
       ],
     };
   },
   components: {
     MyFriend,
   },
+  emits: ["chatTag"],
   methods: {},
 };
 </script>

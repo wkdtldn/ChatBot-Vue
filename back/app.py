@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 @app.route("/", methods=["GET", "POST"])

@@ -54,11 +54,71 @@ export default {
   components: {},
   props: {
     name: String,
+    giveFin: String,
   },
   data() {
     return {
+      lastmsg: [
+        {
+          name: "John",
+          Lmsg: "",
+        },
+        {
+          name: "Jane",
+          Lmsg: "",
+        },
+        {
+          name: "Kevin",
+          Lmsg: "",
+        },
+        {
+          name: "Andrew",
+          Lmsg: "",
+        },
+      ],
       text: "",
       msg: "",
+      John: [
+        {
+          tag: "computer",
+          msg: "hi",
+        },
+        {
+          tag: "user",
+          msg: "",
+        },
+      ],
+      Jane: [
+        {
+          tag: "computer",
+          msg: "hi",
+        },
+        {
+          tag: "user",
+          msg: "",
+        },
+      ],
+      Kevin: [
+        {
+          tag: "computer",
+          msg: "hi",
+        },
+        {
+          tag: "user",
+          msg: "",
+        },
+      ],
+      Andrew: [
+        {
+          tag: "computer",
+          msg: "hi",
+        },
+        {
+          tag: "user",
+          msg: "",
+        },
+      ],
+
       msgList: [
         {
           tag: "computer",
@@ -73,6 +133,7 @@ export default {
   },
   methods: {
     mySend() {
+      alert(this.giveFin);
       this.msgList.push({ tag: "user", msg: this.msg });
       var data = { msg: this.msg };
       console.log(data);
@@ -82,17 +143,18 @@ export default {
           console.log(res.staus);
           console.log(res.data);
           var template = `<div class="line">
-        <span class="chat-box bot ms-2 rounded">${res.data}</span>
-      </div>`;
+          <span class="chat-box bot ms-2 rounded">${res.data}</span>
+        </div>`;
           document
             .querySelector(".chat-content")
             .insertAdjacentHTML("beforeend", template);
+          this.lastmsg[0].Lmsg = res.data;
         })
         .catch((error) => {
           console.log(error);
         })
         .finally(() => {
-          console.log("항상 마지막에 실행");
+          console.log(this.lastmsg[0]);
         });
       this.msg = "";
       this.$refs.cursor.focus();

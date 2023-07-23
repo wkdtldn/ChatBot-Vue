@@ -3,7 +3,11 @@
     <div class="container-fluid">
       <div class="row">
         <NavBar class="col-2 p-0"></NavBar>
-        <FriendChat class="col-10 p-0"></FriendChat>
+        <FriendChat
+          class="col-10 p-0"
+          @chatTag="tagshow"
+          :giveFin="message"
+        ></FriendChat>
       </div>
     </div>
   </div>
@@ -19,17 +23,17 @@ export default {
     NavBar,
     FriendChat,
   },
+  data() {
+    return {
+      message: this.chatTag,
+    };
+  },
+  methods: {
+    tagshow() {
+      console.log(this.message);
+    },
+  },
 };
 </script>
 
-<style>
-/* .my-nav {
-  position: fixed;
-  width: 280px;
-  height: 100vh;
-}
-.my-fchat {
-  position: absolute;
-  left: 280px;
-} */
-</style>
+<style></style>
